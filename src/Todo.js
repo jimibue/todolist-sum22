@@ -3,7 +3,7 @@ const Todo = (props)=>{
     const [showButtons, setShowButtons] = useState(true)
     return (
         <li className={`todo ${props.complete ? "complete":''}`}>
-            <p>{props.name} id:{props.id}</p>
+            <p>{props.name}</p>
             <button onClick={()=>setShowButtons(!showButtons)}>toggle</button>
             {showButtons && (
              <> 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Todo from "./Todo";
+import TodoForm from "./TodoForm";
 
 const fakeAPICallToGetTodos = (url) => {
   const initTodos = [
@@ -29,6 +30,11 @@ const Todos = () => {
   useEffect(() => {
     getTodos();
   }, []);
+
+  const addTodo =(todo)=>{
+      let newTodos = [todo, ...todos]
+      setTodos(newTodos)
+  }
 
   const removeTodo = (id) => {
     let newTodos = todos.filter((t) => t.id !== id);
@@ -68,10 +74,12 @@ const Todos = () => {
     ));
   };
   return (
-    <div>
+    <div className="todos">
       <h1>Todos</h1>
       <button onClick={getTodos}>get Todos</button>
+       <TodoForm addTodoYo={addTodo} />
       <ul>{renderTodos()}</ul>
+
     </div>
   );
 };
